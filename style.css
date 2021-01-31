@@ -1,0 +1,118 @@
+body{
+  display: grid;
+  grid-template: 2fr 1fr 1fr / 1fr;
+  /*justify-content: center;*/
+  /*align-content: flex-start;*/
+  background-image: url(teal_paper.svg), none;
+
+}
+.header{
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.field{
+  width: 250px;
+  grid-row: 3 / 4;
+  display: inline-block;
+  margin-right: -200px;
+  position: relative;
+  z-index: -1;
+}
+
+.button{
+  height: 30px;
+  grid-row: 3 / 4;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: -1;
+}
+
+input{
+  grid-row: 3 / 4;
+  display: inline-block;
+  position: relative;
+  left: 230px;
+  top:-20px;
+  width: 200px;
+  height: 20px;
+  border: none;
+  background-color: hsla(0, 0%, 100%, 0) ;
+}
+
+form{
+  grid-row: 3 / 4;
+  display:inline-block;
+  position: relative;
+}
+
+::placeholder{
+  color: #ef5b99;
+  color: hsl(335, 82%, 65%);
+  font-family: "bradley hand";
+  font-size: 18px;
+}
+
+.submit{
+  color: #ef5b99;
+  color: hsl(335, 82%, 65%);
+  font-family: "bradley hand";
+  font-size: 18px;
+  display:inline-block;
+  position:relative;
+  left: 150px;
+  top:-20px;
+}
+
+h2{
+  mix-blend-mode: multiply; /*not working*/
+  color: hsl(343, 100%, 50%);
+  color: hsla(343, 100%, 50%, 0.5);
+  font-family: "chalkduster";
+  font-size: 50px;
+  grid-row: 2 / 3;
+  text-align: center;
+  align-self: flex-end;
+}
+
+.wrapper{
+  display: inline-block;
+  position: relative;
+  max-width: 150px;
+  animation-name: fly;
+  animation-delay:0.5s;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+/* animations*/
+
+.heart{
+  grid-row: 3/4;
+  height:125px;
+  position: relative;
+  animation-name: flap;
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+
+@keyframes flap {
+  0% {transform: scaleX(0);}
+  100% {transform: scaleX(1);}
+}
+/* was working until moved to wrapper, now only rotates,
+tried splitting into 2 animation and redistributing -- DW,
+did move a before defining max-width of wrapper
+- it was moving along the wrapper axis, but stopped when the width was reduced
+(still technically moving along the wrapper axis, there is just less of an axis)*/
+@keyframes fly {
+  0% {transform: rotate(225deg); left:-100px; bottom:-100px;}
+  25% {transform: rotate(235deg); left:100px; bottom: 250px;}
+  50% {transform: rotate(225deg); left: 300px; bottom:350px;}
+  75% {transform: rotate(90deg); left:500px; bottom:500px;}
+  100% {transform: rotate(30deg); left:100px; bottom:450px;}
+}
